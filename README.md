@@ -1,6 +1,6 @@
-#Club Dues project
+# Club Dues project
 ## Project to apply Clean Architecture
-###Description:
+### Description:
 A simple Spring Boot project for apply the concept of clean architecture. Include unit, integration and ac tests
 ```aidl
 mvn test
