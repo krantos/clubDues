@@ -16,7 +16,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
 
 @MockitoSettings
 class ClubMemberRepositoryJPATest {
@@ -70,9 +73,10 @@ class ClubMemberRepositoryJPATest {
 
   @Test
   void save_Returns_ClubMember() {
+    ClubMember clubMember = new ClubMember();
     when(mockRepository.save(any(ClubMemberJPA.class))).thenReturn(new ClubMemberJPA());
-    Object obj = repositoryJPA.save(new ClubMember());
-    assertThat(obj).isOfAnyClassIn(ClubMember.class);
+    repositoryJPA.save(clubMember);
+    verify(mockRepository, times(1)).save(any(ClubMemberJPA.class));
   }
 
   @Test
@@ -91,8 +95,7 @@ class ClubMemberRepositoryJPATest {
   @Test
   void deleteById_ThrowsDBException() {
     doThrow(new PersistenceException()).when(mockRepository).deleteById(anyLong());
-    Throwable throwable = catchThrowable(() -> repositoryJPA.deleteById(1l));
+    Throwable throwable = catchThrowable(() -> repositoryJPA.deleteById(1L));
     assertThat(throwable).isInstanceOfAny(DBException.class);
   }
-
 }

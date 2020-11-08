@@ -30,15 +30,16 @@ public class MapperFromJson {
   }
 
   public static boolean isValidJson(String json, String schemaFileName) {
+    var isValid = false;
     try {
       JsonNode jsonNode = JsonLoader.fromString(json);
       JsonNode validSchema = JsonLoader.fromResource(schemaFileName);
       JsonSchema schema = JsonSchemaFactory.byDefault().getJsonSchema(validSchema);
       ProcessingReport r1 = schema.validate(jsonNode);
-      return r1.isSuccess();
+      isValid = r1.isSuccess();
     } catch (IOException | ProcessingException exception) {
       logger.info(exception.getMessage());
     }
-    return false;
+    return isValid;
   }
 }
