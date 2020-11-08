@@ -15,8 +15,8 @@ import java.io.IOException;
 
 public class MapperFromJson {
 
-  private static ObjectMapper objectMapper = new ObjectMapper();
-  private static Logger logger = LoggerFactory.getLogger(MapperFromJson.class);
+  private static final ObjectMapper objectMapper = new ObjectMapper();
+  private static final Logger logger = LoggerFactory.getLogger(MapperFromJson.class);
 
   private MapperFromJson() {
   }
@@ -30,17 +30,15 @@ public class MapperFromJson {
   }
 
   public static boolean isValidJson(String json, String schemaFileName) {
-    boolean isValid = false;
     try {
       JsonNode jsonNode = JsonLoader.fromString(json);
       JsonNode validSchema = JsonLoader.fromResource(schemaFileName);
       JsonSchema schema = JsonSchemaFactory.byDefault().getJsonSchema(validSchema);
       ProcessingReport r1 = schema.validate(jsonNode);
-      isValid = r1.isSuccess();
-      logger.info(r1.toString());
-    } catch (IOException | ProcessingException | NullPointerException exception) {
+      return r1.isSuccess();
+    } catch (IOException | ProcessingException exception) {
       logger.info(exception.getMessage());
     }
-    return isValid;
+    return false;
   }
 }

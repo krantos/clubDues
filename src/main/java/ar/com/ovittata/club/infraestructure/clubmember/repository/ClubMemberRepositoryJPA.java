@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import javax.persistence.PersistenceException;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -76,7 +75,7 @@ public class ClubMemberRepositoryJPA implements ClubMemberRepository {
       repository.deleteById(id);
     } catch (PersistenceException exception) {
       logger.error(exception.getMessage());
-      throw new DBException(exception.getMessage());
+      throw new DBException();
     }
   }
 }
