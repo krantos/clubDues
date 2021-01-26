@@ -11,3 +11,9 @@ Feature: Registration
     Given Rama is on the registration page
     When he ask for the registration form
     Then the registration form should appear
+
+  @CYS-5
+  Scenario: beautiful form
+    Given Rama wants to enjoy the registration process
+    When he asks for the registration form
+    Then a beautifil registration form should be displayed
