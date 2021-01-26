@@ -12,7 +12,7 @@ Feature: Registration
     When he ask for the registration form
     Then the registration form should appear
 
-  @CYS-5
+  @CYS-5 @MANUAL
   Scenario: beautiful form
     Given Rama wants to enjoy the registration process
     When he asks for the registration form
