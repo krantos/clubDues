@@ -10,4 +10,4 @@ Feature: Registration
   Scenario: User reach the registration form
     Given Rama is on the registration page
     When he ask for the registration form
-    Then the registration form should appear
+    Then the form should appear
