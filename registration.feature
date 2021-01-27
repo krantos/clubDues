@@ -17,3 +17,9 @@ Feature: Registration
     Given Rama wants to enjoy the registration process
     When he asks for the registration form
     Then a beautifil registration form should be displayed
+
+  @CYS-9
+  Scenario: low network connections
+    Given Rama is on the Google email home page
+    When he goes to the registration page
+    Then it should be displayed an option for low network connection registration
