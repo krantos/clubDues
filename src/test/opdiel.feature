@@ -1,6 +1,6 @@
 Feature: Opdiel
 
-  @OV-1 @OPEN
+  @OV-1 @MANUAL @OPEN
   Scenario: Pldoe
     Given kdowk
     When kdowk
