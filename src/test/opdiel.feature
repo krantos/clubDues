@@ -1,6 +1,6 @@
 Feature: Opdiel
 
-  @ORPHAN
+  @OV-1 @OPEN
   Scenario: Pldoe
     Given kdowk
     When kdowk
