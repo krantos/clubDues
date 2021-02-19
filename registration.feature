@@ -1,6 +1,6 @@
 Feature: Registration
 
-  @CYS-1 @CYS-18
+  @CYS-1 @CYS-18 @MANUAL
   Scenario: User opens registration page
     Given Rama is on the Google email home page
     When he ask for the registration page
